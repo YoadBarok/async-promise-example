@@ -16,11 +16,12 @@ function getPosts(lastPost) {
     }, 1000);
 }
 
-function createPost(post, callback, callBackParam) {
+function createPost(post, callback, callBackParam) { // adding a parameter that will be used as a parameter for the callback function.
     setTimeout(() => {
         posts.push(post);
         callback(callBackParam);
     }, 2000);
 }
 
+// Creating a post and only then calling getPosts so the new post will be included.
 createPost({title: "Post Three", body: "This is post three"}, getPosts, "Last post");
