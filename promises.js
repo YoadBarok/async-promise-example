@@ -17,18 +17,12 @@ function createPost(post) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const titleUsed = posts.some(p => p.title === post.title); // Using some to check for matching title.
-            // const titleUsed = (() => {  // or use Immediately Invoked Function Expression to check if there's a post with the same title of the new post.
-            //     for (const existingPost of posts) {
-            //         if (post.title == existingPost.title) return true;
-            //     }
-            //     return false;
-            // })();
             if (!titleUsed) {
                 posts.push(post);
                 resolve();
             } else {
                 console.log(posts);
-                reject("Error: Something went wrong");
+                reject("Error: Title is taken");
             }
         }, 2000);
     });
